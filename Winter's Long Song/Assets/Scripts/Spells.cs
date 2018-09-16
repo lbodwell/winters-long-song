@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Spells : MonoBehaviour {
 
-    public int spell = 3;
+    public enum spells { Shoot, MoveLeft, MoveRight, Freeze, max};
 
-    int maxSpells = 4;
+    public spells spell = spells.MoveRight;
+    public bool debug = false;
 
 	// Use this for initialization
 	void Start () {
@@ -19,46 +20,54 @@ public class Spells : MonoBehaviour {
         {
             GameObject other = mouseHit();
 
-            Debug.Log("Has tag character: " + other.CompareTag("Character"));
             if (other.CompareTag("Character"))
             {
                 cast(spell, other);
             }
         }
 
-        //Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
-
-        if (Input.GetAxis("Mouse ScrollWheel") != 0)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            scrollSpell((int)Input.GetAxisRaw("Mouse ScrollWheel"));
-
-            Debug.Log("Changed to spell " + spell);
+            scrollSpell(1);
+        }
+        else if(Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            scrollSpell(-1);
         }
     }
 
-    void cast(int spell, GameObject target)
+    void cast(spells sp, GameObject target)
     {
         Robot_behavior_base commands = target.GetComponent<Robot_behavior_base>();
-        switch (spell)
+        switch (sp)
         {
-            case 1:
+            case spells.Freeze:
                 break;
-            case 2:
+            case spells.MoveLeft:
                 commands.StopAllCoroutines();
                 commands.StartCoroutine("moveLeft", 5);
                 break;
-            case 3:
+            case spells.MoveRight:
                 commands.StopAllCoroutines();
                 commands.StartCoroutine("moveRight", 5);
                 break;
         }
+        if (debug) { Debug.Log("Cast " + sp + " on " + target); }
     }
 
     void scrollSpell(int amount)
     {
-        spell += amount;
-        if(spell > maxSpells) { spell = 1; }
-        else if(spell < 1) { spell = maxSpells; }
+        int final = (int)spell + amount;
+        
+        if(final >= (int)spells.max - 1) { final = 0; }
+        else if(final < 0) { final = (int)spells.max - 1; }
+
+        spell = (spells)final;
+
+        if (debug)
+        {
+            Debug.Log("Changed to spell " + spell);
+        }
     }
 
     GameObject mouseHit()

@@ -9,6 +9,8 @@ public class Robot_behavior_base : MonoBehaviour {
     SpriteRenderer sprite;
 
     public float moveSpeed = 1;
+    public enum state { Idle, Patrol };
+    public state startState = state.Idle;
 
     float moveDiv = 10;
 
@@ -19,7 +21,8 @@ public class Robot_behavior_base : MonoBehaviour {
         sprite = GetComponent<SpriteRenderer>();
 
         physics.freezeRotation = true;
-        StartCoroutine(patrol(1, 1));
+
+        if(startState == state.Patrol) { StartCoroutine(patrol(1, 1)); }
 	}
 	
 	// Update is called once per frame

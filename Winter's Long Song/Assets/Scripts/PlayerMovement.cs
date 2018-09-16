@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour {
             FlipPlayer();
         }
         float verticalMove = Input.GetAxis("Jump");
-        Debug.Log(IsOnGround());
+        //Debug.Log(IsOnGround());
         if (IsOnGround() && !isJumping && verticalMove > 0f)
         {
             isJumping = true;
