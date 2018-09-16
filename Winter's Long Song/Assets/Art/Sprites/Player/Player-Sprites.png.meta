@@ -4,6 +4,9 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: Player-Sprites_Idle_1
     21300002: Player-Sprites_Jump
+    21300004: Player-Sprites_Idle
+    21300006: Player-Sprites_Walk_1
+    21300008: Player-Sprites_Walk_2
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -97,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player-Sprites_Idle_1
+      name: Player-Sprites_Idle
       rect:
         serializedVersion: 2
         x: 0
@@ -105,13 +108,53 @@ TextureImporter:
         width: 23
         height: 59
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39883d17d30cdfd4b8764862f503b30a
+      spriteID: 41d4d427ec462854eb89488ada1b21ac
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player-Sprites_Walk_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 23
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3bc665a0545fc04e8dc443c82587b93
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player-Sprites_Walk_2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 0
+        width: 22
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08de049f6b525384ea1698e58da85142
       vertices: []
       indices: 
       edges: []
@@ -120,18 +163,18 @@ TextureImporter:
       name: Player-Sprites_Jump
       rect:
         serializedVersion: 2
-        x: 28
+        x: 96
         y: 0
         width: 25
         height: 59
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a71ca4fcdb5cf8547b3224b2edaa4416
+      spriteID: 28bd9bc241c971a499a9f3e2e7618a98
       vertices: []
       indices: 
       edges: []

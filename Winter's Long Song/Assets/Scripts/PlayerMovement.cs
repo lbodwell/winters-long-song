@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     private Rigidbody2D rb;
+    private Animator anim;
     public float moveSpeed = 5f;
     public float jumpSpeed = 5f;
     private float rayCastLength = 0.005f;
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour {
     private float jumpPressTime;
     private float maxJumpTime = 0.2f;
     private float yPos;
+
     public bool facingRight = true;
     public bool isJumping = false;
     public bool isGrounded = false;
@@ -22,6 +24,8 @@ public class PlayerMovement : MonoBehaviour {
         rb.freezeRotation = true;
         width = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
         height = GetComponent<Collider2D>().bounds.extents.y + 0.2f;
+
+        anim = GetComponent<Animator>();
     }
 	
     void FixedUpdate()
@@ -29,6 +33,10 @@ public class PlayerMovement : MonoBehaviour {
         float horizontalMove = Input.GetAxisRaw("Horizontal");
         Vector2 vect = rb.velocity;
         rb.velocity = new Vector2(horizontalMove * moveSpeed, vect.y);
+
+        anim.SetFloat("Speed", Mathf.Abs(horizontalMove));
+        anim.SetBool("Jumping", isJumping);
+
         if ((horizontalMove > 0 && !facingRight) || (horizontalMove < 0 && facingRight))
         {
             FlipPlayer();
