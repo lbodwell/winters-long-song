@@ -6,12 +6,15 @@ public class Spells : MonoBehaviour {
 
     public enum spells { Shoot, MoveLeft, MoveRight, Freeze, max};
 
-    public spells spell = spells.MoveRight;
+    public spells spell = spells.MoveLeft;
     public bool debug = false;
+    public float castingAnimationTime = 0.5f;
+
+    Animator anim;
 
 	// Use this for initialization
 	void Start () {
-		
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -52,6 +55,9 @@ public class Spells : MonoBehaviour {
                 commands.StartCoroutine("moveRight", 5);
                 break;
         }
+
+        StartCoroutine(castingFor(castingAnimationTime));
+
         if (debug) { Debug.Log("Cast " + sp + " on " + target); }
     }
 
@@ -68,6 +74,17 @@ public class Spells : MonoBehaviour {
         {
             Debug.Log("Changed to spell " + spell);
         }
+    }
+
+    IEnumerator castingFor (float time)
+    {
+        anim.SetBool("Casting", true);
+
+        yield return new WaitForSeconds(time);
+
+        anim.SetBool("Casting", false);
+
+        yield return null;
     }
 
     GameObject mouseHit()
