@@ -45,6 +45,7 @@ public class Spells : MonoBehaviour {
         switch (sp)
         {
             case spells.Freeze:
+                commands.StopAllCoroutines();
                 break;
             case spells.MoveLeft:
                 commands.StopAllCoroutines();

@@ -17,11 +17,6 @@ public class Wall_Behavior : MonoBehaviour {
         startPos = transform.position;
         endPos = transform.position + offset;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
     
     IEnumerator move()
     {

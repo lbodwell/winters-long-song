@@ -68,6 +68,8 @@ public class PlayerMovement : MonoBehaviour {
             verticalMove = 0f;
         }
         isGrounded = IsOnGround();
+
+        if (Input.GetKeyUp("r")) { Application.LoadLevel(Application.loadedLevel); }
     }
 
     private void FlipPlayer()
